@@ -47,6 +47,7 @@ int listaProfessores(void) {
 int main(int argc, char ** argv) {
 	
 	int opcao = 0;
+	char lixo;
 	
 	setlocale(LC_ALL, "Portuguese");
 	
@@ -69,7 +70,7 @@ int main(int argc, char ** argv) {
 			"5) Horários por professor\n"
 			"6) Horários por turma");
 
-		if (scanf("%d", &opcao) != 0) {
+		if (scanf("%d%c", &opcao, &lixo) != 0) {
 			switch (opcao) {
 			case 0:
 				puts("<Encerrando...>");
