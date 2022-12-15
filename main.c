@@ -36,6 +36,8 @@ int listaSalas(void) {
 				"+--------------+--------------+--------------+\n"
 				"| Grêmio       | Lab. 216     | 325          |\n"
 				"+--------------+--------------+--------------+\n"));
+	// 1. substituir nomes por %s e incluir parâmetros char[] na chamada da função
+	// 2. escrever lista de salas e professores em arquivo.txt
 }
 
 int listaProfessores(void) {
