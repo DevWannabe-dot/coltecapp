@@ -12,12 +12,18 @@
 #include <string.h>
 #include <math.h>
 #include <time.h>
+#include <stdint.h>
 
 /* Constantes */
 #define SUCESSO (0)
 
 /* Tipos */
-typedef int bool_t;
+typedef uint8_t bool_t;
+
+typedef struct estrutura_salas {
+	unsigned short ID;
+	uint8_t andar;
+} salas;
 
 // coltecapp
 // void imprimeTabelaHorarios(int x[], int y[])
@@ -40,14 +46,31 @@ int listaSalas(void) {
 	// 2. escrever lista de salas e professores em arquivo.txt
 }
 
+bool_t salaOcupada(unsigned short ID) {
+	// sincronizar com tempo
+	// @return valor booleano 0 ou 1, interpretado em listaHorariosSala()
+	return SUCESSO;
+}
+
+void listaHorariosSala(unsigned short ID) {
+	
+	// Lista horários conhecidos em que a sala é usada, formatado em tabela por dia
+	if (salaOcupada(ID)) {
+		printf("\n\t* A sala solicitada está OCUPADA\n");
+	}
+	else printf("\n\t* A sala solicitada está LIVRE\n");
+}
+
 int listaProfessores(void) {
 	// tabela simples com matérias e professores
+	return SUCESSO;
 }
 
 int main(int argc, char ** argv) {
 	
 	int opcao = 0;
 	char lixo;
+	unsigned short ID_sala;
 	
 	setlocale(LC_ALL, "Portuguese");
 	
@@ -70,7 +93,7 @@ int main(int argc, char ** argv) {
 			"5) Horários por professor\n"
 			"6) Horários por turma");
 
-		if (scanf("%d%c", &opcao, &lixo) != 0) {
+		if (scanf("%d%c", &opcao, &lixo)) {
 			switch (opcao) {
 			case 0:
 				puts("<Encerrando...>");
@@ -79,14 +102,21 @@ int main(int argc, char ** argv) {
 				if(listaSalas() <= 0) fprintf(stderr, "\n<Erro 2: lista não pôde ser impressa.>\n");
 				break;
 			case 2:
+				// Lista de professores
 				break;
 			case 3:
+				// Lista de turmas
 				break;
 			case 4:
+				printf("Qual sala deseja saber os horários? ");
+				(void)scanf("%hu%c", &ID_sala, &lixo);
+				listaHorariosSala(ID_sala);
 				break;
 			case 5:
+				// Horários por professor
 				break;
 			case 6:
+				// Horários por turma
 				break;
 			default:
 				fprintf(stderr, "\n<Erro 1: função não existe\n");
